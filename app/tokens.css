@@ -1,0 +1,224 @@
+/* Reference tokens: raw values that never change by theme or component. */
+:root {
+  --ref-color-white: #ffffff;
+  --ref-color-black: #0b0d12;
+
+  --ref-color-neutral-50: #f7f8fa;
+  --ref-color-neutral-100: #eef0f3;
+  --ref-color-neutral-200: #e1e4e8;
+  --ref-color-neutral-300: #cbd0d7;
+  --ref-color-neutral-400: #9da4ae;
+  --ref-color-neutral-500: #737b87;
+  --ref-color-neutral-600: #525a66;
+  --ref-color-neutral-700: #383f49;
+  --ref-color-neutral-800: #242a32;
+  --ref-color-neutral-900: #171b21;
+  --ref-color-neutral-950: #101318;
+
+  --ref-color-brand-50: #eef6ff;
+  --ref-color-brand-100: #d9ebff;
+  --ref-color-brand-200: #b9d9ff;
+  --ref-color-brand-300: #8ec0ff;
+  --ref-color-brand-400: #5b9dff;
+  --ref-color-brand-500: #3478f6;
+  --ref-color-brand-600: #245fe5;
+  --ref-color-brand-700: #1f4bc6;
+  --ref-color-brand-800: #203fa0;
+  --ref-color-brand-900: #20377e;
+
+  --ref-color-green-50: #edfbf3;
+  --ref-color-green-600: #0e7648;
+  --ref-color-amber-50: #fff8e7;
+  --ref-color-amber-700: #9a5b00;
+  --ref-color-red-50: #fff1f1;
+  --ref-color-red-600: #d33d46;
+
+  --ref-space-0: 0;
+  --ref-space-25: 0.125rem;
+  --ref-space-50: 0.25rem;
+  --ref-space-75: 0.375rem;
+  --ref-space-100: 0.5rem;
+  --ref-space-150: 0.75rem;
+  --ref-space-200: 1rem;
+  --ref-space-250: 1.25rem;
+  --ref-space-300: 1.5rem;
+  --ref-space-400: 2rem;
+  --ref-space-500: 2.5rem;
+  --ref-space-600: 3rem;
+  --ref-space-800: 4rem;
+  --ref-space-1000: 5rem;
+  --ref-space-1200: 6rem;
+
+  --ref-radius-100: 0.375rem;
+  --ref-radius-200: 0.5rem;
+  --ref-radius-300: 0.75rem;
+  --ref-radius-400: 1rem;
+  --ref-radius-500: 1.25rem;
+  --ref-radius-full: 999rem;
+
+  --ref-font-family-sans: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Noto Sans KR", "Apple SD Gothic Neo", Roboto, Arial, sans-serif;
+  --ref-font-family-mono: "SFMono-Regular", Consolas, "Liberation Mono",
+    monospace;
+  --ref-font-size-100: 0.75rem;
+  --ref-font-size-200: 0.8125rem;
+  --ref-font-size-300: 0.875rem;
+  --ref-font-size-400: 1rem;
+  --ref-font-size-500: 1.125rem;
+  --ref-font-size-600: 1.25rem;
+  --ref-font-size-700: 1.5rem;
+  --ref-font-size-800: 1.875rem;
+  --ref-font-size-900: 2.25rem;
+  --ref-font-size-1000: 2.75rem;
+  --ref-font-weight-regular: 400;
+  --ref-font-weight-medium: 500;
+  --ref-font-weight-semibold: 600;
+  --ref-font-weight-bold: 700;
+  --ref-line-height-tight: 1.25;
+  --ref-line-height-heading: 1.35;
+  --ref-line-height-body: 1.7;
+
+  --ref-shadow-100: 0 0.0625rem 0.125rem rgb(11 13 18 / 5%);
+  --ref-shadow-200: 0 0.5rem 1.5rem rgb(11 13 18 / 8%);
+  --ref-shadow-300: 0 1.25rem 3.5rem rgb(11 13 18 / 14%);
+  --ref-duration-fast: 120ms;
+  --ref-duration-normal: 200ms;
+  --ref-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+/* System tokens: intent-based aliases. Themes only replace this layer. */
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --sys-color-surface-canvas: var(--ref-color-white);
+  --sys-color-surface-subtle: var(--ref-color-neutral-50);
+  --sys-color-surface-raised: var(--ref-color-white);
+  --sys-color-surface-inverse: var(--ref-color-neutral-900);
+  --sys-color-surface-accent-subtle: var(--ref-color-brand-50);
+  --sys-color-surface-success-subtle: var(--ref-color-green-50);
+  --sys-color-surface-warning-subtle: var(--ref-color-amber-50);
+  --sys-color-surface-danger-subtle: var(--ref-color-red-50);
+
+  --sys-color-text-primary: var(--ref-color-neutral-900);
+  --sys-color-text-secondary: var(--ref-color-neutral-700);
+  --sys-color-text-tertiary: var(--ref-color-neutral-600);
+  --sys-color-text-inverse: var(--ref-color-white);
+  --sys-color-text-accent: var(--ref-color-brand-700);
+  --sys-color-text-success: var(--ref-color-green-600);
+  --sys-color-text-warning: var(--ref-color-amber-700);
+  --sys-color-text-danger: var(--ref-color-red-600);
+
+  --sys-color-border-subtle: var(--ref-color-neutral-100);
+  --sys-color-border-default: var(--ref-color-neutral-200);
+  --sys-color-border-strong: var(--ref-color-neutral-400);
+  --sys-color-action-primary: var(--ref-color-brand-600);
+  --sys-color-action-primary-hover: var(--ref-color-brand-700);
+  --sys-color-action-primary-pressed: var(--ref-color-brand-800);
+  --sys-color-action-secondary: var(--ref-color-neutral-100);
+  --sys-color-action-secondary-hover: var(--ref-color-neutral-200);
+  --sys-color-focus-ring: var(--ref-color-brand-700);
+  --sys-color-overlay: rgb(11 13 18 / 42%);
+  --sys-color-code-surface: #111722;
+  --sys-color-code-text: #d9e6ff;
+  --sys-color-code-muted: #aab6c8;
+  --sys-color-code-border: rgb(255 255 255 / 12%);
+  --sys-color-code-hover: rgb(255 255 255 / 10%);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --sys-color-surface-canvas: var(--ref-color-neutral-950);
+  --sys-color-surface-subtle: #171b21;
+  --sys-color-surface-raised: #1d222a;
+  --sys-color-surface-inverse: var(--ref-color-neutral-50);
+  --sys-color-surface-accent-subtle: #152642;
+  --sys-color-surface-success-subtle: #102b20;
+  --sys-color-surface-warning-subtle: #33270f;
+  --sys-color-surface-danger-subtle: #35191c;
+
+  --sys-color-text-primary: var(--ref-color-neutral-50);
+  --sys-color-text-secondary: var(--ref-color-neutral-300);
+  --sys-color-text-tertiary: var(--ref-color-neutral-400);
+  --sys-color-text-inverse: var(--ref-color-neutral-950);
+  --sys-color-text-accent: var(--ref-color-brand-300);
+  --sys-color-text-success: #62d49a;
+  --sys-color-text-warning: #f1bd60;
+  --sys-color-text-danger: #ff8d93;
+
+  --sys-color-border-subtle: #242a32;
+  --sys-color-border-default: #313843;
+  --sys-color-border-strong: #59616d;
+  --sys-color-action-primary: var(--ref-color-brand-300);
+  --sys-color-action-primary-hover: var(--ref-color-brand-200);
+  --sys-color-action-primary-pressed: var(--ref-color-brand-100);
+  --sys-color-action-secondary: #272d36;
+  --sys-color-action-secondary-hover: #333a45;
+  --sys-color-focus-ring: var(--ref-color-brand-300);
+  --sys-color-overlay: rgb(0 0 0 / 68%);
+  --sys-color-code-surface: #090c12;
+  --sys-color-code-text: #d9e6ff;
+  --sys-color-code-muted: #b6c1d1;
+  --sys-color-code-border: rgb(255 255 255 / 16%);
+  --sys-color-code-hover: rgb(255 255 255 / 12%);
+}
+
+:root {
+  --sys-font-family-body: var(--ref-font-family-sans);
+  --sys-font-family-code: var(--ref-font-family-mono);
+  --sys-type-body-md-size: var(--ref-font-size-400);
+  --sys-type-body-md-line-height: var(--ref-line-height-body);
+  --sys-type-body-md-weight: var(--ref-font-weight-regular);
+  --sys-type-body-md-letter-spacing: -0.01em;
+  --sys-type-label-sm-size: var(--ref-font-size-200);
+  --sys-type-label-sm-line-height: 1.4;
+  --sys-type-label-sm-weight: var(--ref-font-weight-semibold);
+  --sys-type-title-lg-size: clamp(2.25rem, 4.5vw, 3.75rem);
+  --sys-type-title-lg-line-height: 1.12;
+  --sys-type-title-lg-weight: var(--ref-font-weight-bold);
+  --sys-layout-header-height: 4rem;
+  --sys-layout-sidebar-width: 16rem;
+  --sys-layout-toc-width: 14rem;
+  --sys-layout-content-max: 52rem;
+  --sys-layout-shell-max: 90rem;
+  --sys-space-page-inline: clamp(1.25rem, 3vw, 3rem);
+  --sys-space-section-block: clamp(4rem, 8vw, 7rem);
+}
+
+/* Component tokens: local contracts for values that vary by component. */
+:root {
+  --component-button-height-sm: 2.25rem;
+  --component-button-height-md: 3rem;
+  --component-button-padding-inline-sm: var(--ref-space-150);
+  --component-button-padding-inline-md: var(--ref-space-250);
+  --component-button-radius: var(--ref-radius-300);
+  --component-button-label-size: var(--ref-font-size-300);
+  --component-button-label-weight: var(--ref-font-weight-semibold);
+  --component-button-background-primary: var(--sys-color-action-primary);
+  --component-button-background-primary-hover: var(--sys-color-action-primary-hover);
+  --component-button-background-primary-pressed: var(--sys-color-action-primary-pressed);
+  --component-button-text-primary: var(--sys-color-text-inverse);
+  --component-button-background-secondary: var(--sys-color-action-secondary);
+  --component-button-background-secondary-hover: var(--sys-color-action-secondary-hover);
+  --component-button-text-secondary: var(--sys-color-text-primary);
+  --component-button-border-secondary: var(--sys-color-border-default);
+
+  --component-field-height: 3rem;
+  --component-field-padding-inline: var(--ref-space-200);
+  --component-field-radius: var(--ref-radius-300);
+  --component-field-border-color: var(--sys-color-border-default);
+
+  --component-card-padding: var(--ref-space-300);
+  --component-card-radius: var(--ref-radius-400);
+  --component-card-border-color: var(--sys-color-border-default);
+  --component-card-shadow: var(--ref-shadow-100);
+
+  --component-navigation-item-height: 2.5rem;
+  --component-navigation-item-radius: var(--ref-radius-200);
+}
+
+[data-density="compact"] {
+  --component-button-height-md: 2.5rem;
+  --component-field-height: 2.5rem;
+  --component-card-padding: var(--ref-space-250);
+  --component-navigation-item-height: 2.125rem;
+}
