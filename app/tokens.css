@@ -12,7 +12,8 @@
   --ref-color-neutral-600: #525a66;
   --ref-color-neutral-700: #383f49;
   --ref-color-neutral-800: #242a32;
-  --ref-color-neutral-900: #171b21;
+  /* KRDS 본문 텍스트 근사 검정. krds.go.kr 요약(웹검색)으로 확인. */
+  --ref-color-neutral-900: #1e2124;
   --ref-color-neutral-950: #101318;
 
   --ref-color-brand-50: #eef6ff;
@@ -21,10 +22,20 @@
   --ref-color-brand-300: #8ec0ff;
   --ref-color-brand-400: #5b9dff;
   --ref-color-brand-500: #3478f6;
-  --ref-color-brand-600: #245fe5;
+  /* KRDS 정부 표준 Primary(정부 청색). krds.go.kr/html/site/style/style_02.html 요약(웹검색)으로 확인. */
+  --ref-color-brand-600: #256ef4;
   --ref-color-brand-700: #1f4bc6;
   --ref-color-brand-800: #203fa0;
   --ref-color-brand-900: #20377e;
+
+  /* Secondary 램프 — 근사값. KRDS는 "primary와 조화되는, 덜 강조되는 보조색"으로만 서술하며
+     정확한 hex는 이 세션의 네트워크 정책상 krds.go.kr 접근이 막혀 확인하지 못했다.
+     Primary와 같은 색상군(약 219–226° blue)에서 채도를 낮춘 파생값이며,
+     krds.go.kr/html/site/style/style_02.html 접근이 가능해지면 재검증이 필요하다. */
+  --ref-color-brand-secondary-50: #f0f3f9;
+  --ref-color-brand-secondary-300: #a6b4d9;
+  --ref-color-brand-secondary-600: #425894;
+  --ref-color-brand-secondary-800: #242f57;
 
   --ref-color-green-50: #edfbf3;
   --ref-color-green-600: #0e7648;
@@ -84,6 +95,11 @@
   --ref-duration-fast: 120ms;
   --ref-duration-normal: 200ms;
   --ref-easing-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  /* z-index 스케일 — Utilities 문서(Elevation·Z-index)에서 그대로 참조하는 실제 값 */
+  --ref-z-sticky: 40;
+  --ref-z-overlay: 80;
+  --ref-z-skip-link: 100;
 }
 
 /* System tokens: intent-based aliases. Themes only replace this layer. */
@@ -123,6 +139,8 @@
   --sys-color-code-muted: #aab6c8;
   --sys-color-code-border: rgb(255 255 255 / 12%);
   --sys-color-code-hover: rgb(255 255 255 / 10%);
+  --sys-color-accent-secondary: var(--ref-color-brand-secondary-600);
+  --sys-color-accent-secondary-subtle: var(--ref-color-brand-secondary-50);
 }
 
 [data-theme="dark"] {
@@ -160,10 +178,14 @@
   --sys-color-code-muted: #b6c1d1;
   --sys-color-code-border: rgb(255 255 255 / 16%);
   --sys-color-code-hover: rgb(255 255 255 / 12%);
+  --sys-color-accent-secondary: var(--ref-color-brand-secondary-300);
+  --sys-color-accent-secondary-subtle: #1b2338;
 }
 
 :root {
-  --sys-font-family-body: var(--ref-font-family-sans);
+  /* Pretendard는 공개 CDN(jsdelivr)에서 방문자 브라우저가 직접 로드(app/layout.tsx <link>) —
+     KRDS가 쓰는 "Pretendard GOV"의 공개 라이선스 배포판 폰트로 대체. 로드 실패 시 한글 폴백 유지. */
+  --sys-font-family-body: "Pretendard", var(--ref-font-family-sans);
   --sys-font-family-code: var(--ref-font-family-mono);
   --sys-type-body-md-size: var(--ref-font-size-400);
   --sys-type-body-md-line-height: var(--ref-line-height-body);
@@ -181,7 +203,11 @@
   --sys-layout-content-max: 52rem;
   --sys-layout-shell-max: 90rem;
   --sys-space-page-inline: clamp(1.25rem, 3vw, 3rem);
-  --sys-space-section-block: clamp(4rem, 8vw, 7rem);
+  /* Was clamp(4rem, 8vw, 7rem) — halved for the new multi-page IA, where a "page" is a single
+     short doc (2-4 --content-section subsections) rather than one long marketing-style scroll;
+     the old value produced ~14rem gaps once .content-section's own top padding stacked with the
+     adjacent-sibling margin-top below. */
+  --sys-space-section-block: clamp(2rem, 4vw, 3rem);
 }
 
 /* Component tokens: local contracts for values that vary by component. */
@@ -214,6 +240,39 @@
 
   --component-navigation-item-height: 2.5rem;
   --component-navigation-item-radius: var(--ref-radius-200);
+
+  --component-field-border-color-focus: var(--sys-color-focus-ring);
+  --component-field-border-color-error: var(--sys-color-text-danger);
+
+  /* Bottom sheet (Mobile flagship) */
+  --component-sheet-radius-top: var(--ref-radius-500);
+  --component-sheet-handle-width: 2.25rem;
+  --component-sheet-handle-height: 0.25rem;
+  --component-sheet-padding: var(--ref-space-300);
+  --component-sheet-background: var(--sys-color-surface-raised);
+
+  /* Chip (Mobile flagship) */
+  --component-chip-height: 2rem;
+  --component-chip-radius: var(--ref-radius-full);
+  --component-chip-padding-inline: var(--ref-space-150);
+  --component-chip-background: var(--sys-color-surface-subtle);
+  --component-chip-background-selected: var(--sys-color-surface-accent-subtle);
+  --component-chip-text-selected: var(--sys-color-text-accent);
+
+  /* Table (PC flagship) */
+  --component-table-header-background: var(--sys-color-surface-subtle);
+  --component-table-row-border: var(--sys-color-border-subtle);
+  --component-table-cell-padding-inline: var(--ref-space-200);
+  --component-table-cell-padding-block: var(--ref-space-150);
+
+  /* Accordion (PC flagship) */
+  --component-accordion-radius: var(--ref-radius-100);
+  --component-accordion-header-height: 3rem;
+  --component-accordion-border-color: var(--sys-color-border-default);
+
+  /* Breadcrumb (PC flagship — formalizes the existing .breadcrumb rules) */
+  --component-breadcrumb-text-current: var(--sys-color-text-primary);
+  --component-breadcrumb-gap: var(--ref-space-100);
 }
 
 [data-density="compact"] {
@@ -221,4 +280,18 @@
   --component-field-height: 2.5rem;
   --component-card-padding: var(--ref-space-250);
   --component-navigation-item-height: 2.125rem;
+}
+
+/* Surface layer — same mechanism as [data-density], set by DocShell's root element
+   (server-rendered from the route's surface, not a persisted user preference). */
+[data-surface="pc"] {
+  --component-button-radius: var(--ref-radius-100);
+  --component-field-radius: var(--ref-radius-100);
+  --component-accordion-radius: var(--ref-radius-100);
+  --sys-layout-content-max: 64rem;
+  --sys-layout-shell-max: 96rem;
+}
+
+[data-surface="mobile"] {
+  --sys-type-title-lg-size: clamp(1.875rem, 6vw, 2.75rem);
 }

@@ -1,0 +1,243 @@
+/* Shared chrome for the data-driven doc templates (CategoryIndexTemplate, DetailDocTemplate,
+   StandardDocTemplate, ReferenceDocTemplate) and the surface-aware parts of DocShell. */
+
+.hero-section--detail {
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.surface-switch {
+  display: inline-flex;
+  align-items: center;
+  height: 2.5rem;
+  padding: 0 var(--ref-space-150);
+  border: 0.0625rem solid var(--sys-color-border-default);
+  border-radius: var(--ref-radius-full);
+  color: var(--sys-color-text-secondary);
+  font-size: var(--ref-font-size-200);
+  font-weight: var(--ref-font-weight-medium);
+  white-space: nowrap;
+  transition:
+    border-color var(--ref-duration-fast) var(--ref-easing-standard),
+    color var(--ref-duration-fast) var(--ref-easing-standard);
+}
+
+.surface-switch:hover {
+  border-color: var(--sys-color-action-primary);
+  color: var(--sys-color-text-accent);
+}
+
+.component-meta {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: var(--ref-space-300);
+  gap: var(--ref-space-400);
+}
+
+.component-meta dt {
+  color: var(--sys-color-text-tertiary);
+  font-size: var(--ref-font-size-100);
+}
+
+.component-meta dd {
+  margin-top: var(--ref-space-25);
+  font-family: var(--sys-font-family-code);
+  font-size: var(--ref-font-size-200);
+}
+
+.token-values--detail {
+  margin-top: var(--ref-space-300);
+}
+
+/* Category index cards (Foundation/Components/Utilities landing per surface) */
+.index-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  margin-top: var(--ref-space-400);
+  gap: var(--ref-space-200);
+}
+
+.index-card {
+  display: grid;
+  align-content: start;
+  min-height: 10rem;
+  padding: var(--component-card-padding);
+  border: 0.0625rem solid var(--component-card-border-color);
+  border-radius: var(--component-card-radius);
+  background: var(--sys-color-surface-raised);
+  box-shadow: var(--component-card-shadow);
+  transition:
+    border-color var(--ref-duration-normal) var(--ref-easing-standard),
+    box-shadow var(--ref-duration-normal) var(--ref-easing-standard),
+    transform var(--ref-duration-normal) var(--ref-easing-standard);
+}
+
+.index-card:hover {
+  border-color: var(--sys-color-action-primary);
+  box-shadow: var(--ref-shadow-200);
+  transform: translateY(-0.125rem);
+}
+
+.index-card__treatment {
+  color: var(--sys-color-text-accent);
+  font-family: var(--sys-font-family-code);
+  font-size: var(--ref-font-size-100);
+}
+
+.index-card strong {
+  margin-top: var(--ref-space-200);
+  font-size: var(--ref-font-size-500);
+  letter-spacing: -0.02em;
+}
+
+.index-card p {
+  margin-top: var(--ref-space-100);
+  color: var(--sys-color-text-secondary);
+  font-size: var(--ref-font-size-300);
+  line-height: 1.6;
+}
+
+/* Foundation reference specimens: color swatches driven by data (inline style), not fixed classes */
+.reference-swatch-groups {
+  display: grid;
+  margin-top: var(--ref-space-300);
+  gap: var(--ref-space-300);
+}
+
+.reference-swatch-group__label {
+  color: var(--sys-color-text-tertiary);
+  font-size: var(--ref-font-size-200);
+  font-weight: var(--ref-font-weight-semibold);
+}
+
+.reference-swatch-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+  margin-top: var(--ref-space-150);
+  gap: var(--ref-space-150);
+}
+
+.reference-swatch {
+  display: grid;
+  gap: var(--ref-space-50);
+}
+
+.reference-swatch__chip {
+  height: 3.5rem;
+  border: 0.0625rem solid var(--sys-color-border-subtle);
+  border-radius: var(--ref-radius-200);
+}
+
+.reference-swatch__name {
+  font-size: var(--ref-font-size-200);
+  font-weight: var(--ref-font-weight-medium);
+}
+
+.reference-swatch code {
+  color: var(--sys-color-text-tertiary);
+  font-size: 0.6875rem;
+  overflow-wrap: anywhere;
+}
+
+/* Foundation reference specimens: generic label/value/note table (spacing, motion, grid, elevation…) */
+.reference-table {
+  display: grid;
+  margin-top: var(--ref-space-300);
+  border: 0.0625rem solid var(--sys-color-border-default);
+  border-radius: var(--ref-radius-300);
+  overflow: hidden;
+}
+
+.reference-table__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.4fr);
+  padding: var(--ref-space-150) var(--ref-space-200);
+  gap: var(--ref-space-150);
+}
+
+.reference-table__row:not(:last-child) {
+  border-bottom: 0.0625rem solid var(--sys-color-border-subtle);
+}
+
+.reference-table__row--head {
+  background: var(--sys-color-surface-subtle);
+  color: var(--sys-color-text-tertiary);
+  font-size: var(--ref-font-size-100);
+  font-weight: var(--ref-font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.reference-table__row span {
+  align-self: center;
+  font-size: var(--ref-font-size-300);
+  overflow-wrap: anywhere;
+}
+
+.reference-table__row code {
+  color: var(--sys-color-text-accent);
+  font-size: var(--ref-font-size-200);
+}
+
+@media (max-width: 47.9375rem) {
+  .reference-table__row {
+    grid-template-columns: 1fr;
+    gap: var(--ref-space-50);
+  }
+
+  .reference-table__row--head {
+    display: none;
+  }
+
+  .reference-table__row span::before {
+    display: block;
+    color: var(--sys-color-text-tertiary);
+    font-size: 0.6875rem;
+    content: attr(data-label);
+  }
+}
+
+@media (max-width: 29.9375rem) {
+  .surface-switch {
+    padding: 0 var(--ref-space-100);
+    font-size: var(--ref-font-size-100);
+  }
+
+  .index-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Root landing page (/) — has no DocShell, so it carries its own minimal chrome. */
+.landing {
+  min-height: 100vh;
+  background: var(--sys-color-surface-canvas);
+}
+
+.landing__header {
+  display: flex;
+  align-items: center;
+  height: var(--sys-layout-header-height);
+  padding: 0 var(--ref-space-300);
+  border-bottom: 0.0625rem solid var(--sys-color-border-subtle);
+}
+
+.landing main {
+  width: min(100%, var(--sys-layout-content-max));
+  margin: 0 auto;
+  padding: 0 var(--sys-space-page-inline) var(--ref-space-1000);
+}
+
+.landing__surfaces {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.landing__surfaces .index-card {
+  min-height: 14rem;
+}
+
+@media (max-width: 47.9375rem) {
+  .landing__surfaces {
+    grid-template-columns: 1fr;
+  }
+}

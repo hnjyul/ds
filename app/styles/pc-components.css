@@ -1,0 +1,83 @@
+/* PC-only flagship component previews: Table, Accordion.
+   (Button reuses the existing shared .button classes; Breadcrumb reuses the existing
+   .breadcrumb chrome already defined in globals.css — no new rules needed for either.
+   Standard-tier PC items render through StandardDocTemplate, which has no preview slot.) */
+
+.table-demo-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 0.0625rem solid var(--sys-color-border-default);
+  border-radius: var(--ref-radius-200);
+}
+
+.table-demo {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table-demo th,
+.table-demo td {
+  padding: var(--component-table-cell-padding-block) var(--component-table-cell-padding-inline);
+  border-bottom: 0.0625rem solid var(--component-table-row-border);
+  font-size: var(--ref-font-size-300);
+  white-space: nowrap;
+}
+
+.table-demo thead th {
+  background: var(--component-table-header-background);
+  color: var(--sys-color-text-tertiary);
+  font-size: var(--ref-font-size-100);
+  font-weight: var(--ref-font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.table-demo tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.accordion-demo {
+  display: grid;
+  width: 100%;
+  gap: var(--ref-space-100);
+}
+
+.accordion-demo__item {
+  border: 0.0625rem solid var(--component-accordion-border-color);
+  border-radius: var(--component-accordion-radius);
+  overflow: hidden;
+}
+
+.accordion-demo__item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--component-accordion-header-height);
+  padding: 0 var(--ref-space-200);
+  list-style: none;
+  font-size: var(--ref-font-size-300);
+  font-weight: var(--ref-font-weight-medium);
+  cursor: pointer;
+}
+
+.accordion-demo__item summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion-demo__item summary::after {
+  color: var(--sys-color-text-tertiary);
+  content: "+";
+  font-size: var(--ref-font-size-500);
+}
+
+.accordion-demo__item[open] summary::after {
+  content: "−";
+}
+
+.accordion-demo__item p {
+  padding: 0 var(--ref-space-200) var(--ref-space-200);
+  color: var(--sys-color-text-secondary);
+  font-size: var(--ref-font-size-300);
+  line-height: 1.6;
+}
