@@ -4,14 +4,14 @@ import test from "node:test";
 
 const templateRoot = new URL("../", import.meta.url);
 
-async function render(path) {
+async function render(path, headers = {}) {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   const response = await worker.fetch(
     new Request(`http://localhost${path}`, {
-      headers: { accept: "text/html" },
+      headers: { accept: "text/html", ...headers },
     }),
     {
       ASSETS: {
@@ -27,14 +27,21 @@ async function render(path) {
   return { response, html: await response.text() };
 }
 
-test("server-renders the landing page with links to both surfaces", async () => {
-  const { response, html } = await render("/");
-  assert.equal(response.status, 200);
-  assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
-  assert.match(html, /<html[^>]*lang="ko"/i);
-  assert.match(html, /Common UI/);
-  assert.match(html, /href="\/mobile"/);
-  assert.match(html, /href="\/pc"/);
+const DESKTOP_USER_AGENT =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0 Safari/537.36";
+const MOBILE_USER_AGENT =
+  "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148 Safari/604.1";
+
+test("root path converts a desktop visit to the PC surface", async () => {
+  const { response } = await render("/", { "user-agent": DESKTOP_USER_AGENT });
+  assert.equal(response.status, 307);
+  assert.equal(new URL(response.headers.get("location"), "http://localhost").pathname, "/pc");
+});
+
+test("root path converts a phone visit to the Mobile surface", async () => {
+  const { response } = await render("/", { "user-agent": MOBILE_USER_AGENT });
+  assert.equal(response.status, 307);
+  assert.equal(new URL(response.headers.get("location"), "http://localhost").pathname, "/mobile");
 });
 
 test("server-renders the mobile surface with its own nav and no PC-only components", async () => {

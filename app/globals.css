@@ -1214,6 +1214,26 @@ pre {
   inset: 0;
 }
 
+@keyframes layer-backdrop-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mobile-navigation-slide-in {
+  from {
+    transform: translateX(100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
 .layer-backdrop {
   position: absolute;
   inset: 0;
@@ -1223,6 +1243,7 @@ pre {
   border: 0;
   background: var(--sys-color-overlay);
   cursor: default;
+  animation: layer-backdrop-fade-in var(--ref-duration-normal) var(--ref-easing-standard);
 }
 
 .mobile-navigation {
@@ -1234,6 +1255,7 @@ pre {
   margin-left: auto;
   background: var(--sys-color-surface-canvas);
   box-shadow: var(--ref-shadow-300);
+  animation: mobile-navigation-slide-in var(--ref-duration-normal) var(--ref-easing-standard);
 }
 
 .mobile-navigation__header {
@@ -1263,8 +1285,65 @@ pre {
 .mobile-navigation__body {
   display: grid;
   padding: 0 var(--ref-space-200) var(--ref-space-400);
-  gap: var(--ref-space-300);
+  gap: var(--ref-space-100);
   overflow-y: auto;
+}
+
+.mobile-navigation .navigation-group {
+  border-bottom: 0.0625rem solid var(--sys-color-border-subtle);
+  padding-bottom: var(--ref-space-100);
+}
+
+.mobile-navigation .navigation-group:last-child {
+  border-bottom: 0;
+}
+
+.mobile-navigation .navigation-group summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--ref-space-150) var(--ref-space-150);
+  border-radius: var(--component-navigation-item-radius);
+  cursor: pointer;
+  list-style: none;
+}
+
+.mobile-navigation .navigation-group summary::-webkit-details-marker {
+  display: none;
+}
+
+.mobile-navigation .navigation-group summary:hover {
+  background: var(--sys-color-surface-subtle);
+}
+
+.mobile-navigation .navigation-group summary h2 {
+  margin-bottom: 0;
+  color: var(--sys-color-text-primary);
+  font-size: var(--ref-font-size-300);
+  font-weight: var(--ref-font-weight-semibold);
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.chevron-icon {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  flex: none;
+  border-right: 0.125rem solid var(--sys-color-text-tertiary);
+  border-bottom: 0.125rem solid var(--sys-color-text-tertiary);
+  transform: rotate(-45deg);
+  transition: transform var(--ref-duration-fast) var(--ref-easing-standard);
+}
+
+.mobile-navigation .navigation-group[open] > summary .chevron-icon {
+  transform: rotate(45deg);
+}
+
+.mobile-navigation .navigation-group ul {
+  padding-left: var(--ref-space-150);
+  border-left: 0.0625rem solid var(--sys-color-border-subtle);
+  margin-left: var(--ref-space-200);
 }
 
 .mobile-navigation .navigation-link {

@@ -75,8 +75,11 @@ export function MobileNavDrawer({
         </button>
         <nav className="mobile-navigation__body">
           {nav.map((category) => (
-            <section className="navigation-group" key={category.id}>
-              <h2>{category.label}</h2>
+            <details className="navigation-group" key={category.id} open>
+              <summary>
+                <h2>{category.label}</h2>
+                <span className="chevron-icon" aria-hidden="true" />
+              </summary>
               <ul>
                 {category.items.map((item) => {
                   const isActive = activeCategoryId === category.id && activeItemSlug === item.slug;
@@ -95,7 +98,7 @@ export function MobileNavDrawer({
                   );
                 })}
               </ul>
-            </section>
+            </details>
           ))}
         </nav>
       </aside>
