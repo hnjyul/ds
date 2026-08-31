@@ -85,4 +85,67 @@ export const pcUtilities: Record<string, UtilityEntry> = {
       "새 컴포넌트를 추가할 때 4대 원칙 각각에 대해 최소 1개 이상의 확인 항목을 문서화하는 것을 원칙으로 합니다.",
     ],
   },
+
+  "language-switcher": {
+    category: "Utility",
+    specimen: {
+      kind: "table",
+      rows: [
+        { label: "배치 위치", value: "GNB 유틸리티 바 우측", note: "전체메뉴 · 로그인과 같은 줄에 두고 GNB 주 메뉴보다 낮은 시각적 우선순위로 배치합니다." },
+        { label: "트리거 크기", value: "--component-button-height-sm", note: "유틸리티 바의 다른 텍스트 링크와 높이를 맞춰 정렬을 흐트러뜨리지 않습니다." },
+        { label: "닫힘 상태 표시", value: "현재 언어명 텍스트", note: "국기 아이콘이나 언어 코드만으로 대체하지 않고 언어명을 문자로 노출합니다." },
+        { label: "펼침 목록", value: "--ref-z-overlay", note: "--component-navigation-item-height 높이의 GNB 드롭다운과 같은 구조를 재사용해 다른 콘텐츠 위에 표시합니다." },
+      ],
+    },
+    usageNotes: [
+      "언어 전환 트리거는 GNB 유틸리티 바 안에서 로그인 · 전체메뉴 링크와 동일한 --component-button-height-sm 높이로 맞추고 별도로 축소하지 않습니다.",
+      "펼침 목록에서 현재 언어 항목은 --sys-color-action-primary 텍스트 색상과 aria-current 속성으로 함께 표시해, 이동 없이도 현재 언어를 바로 확인하게 합니다.",
+    ],
+    accessibilityNotes: [
+      "트리거에 aria-haspopup=\"listbox\"와 aria-expanded를 지정하고, 목록 항목은 방향키로 이동하며 Escape 키로 닫히게 구현합니다.",
+      "언어명은 번역하지 않고 해당 언어로 표기해(예: 한국어, English), 원어 사용자가 목록에서 자신의 언어를 바로 찾을 수 있게 합니다.",
+    ],
+  },
+
+  resize: {
+    category: "Utility",
+    specimen: {
+      kind: "table",
+      rows: [
+        { label: "확대 단계", value: "3단계 (100% · 125% · 150%)", note: "html 요소의 font-size 배율을 전환해 rem 기반 --sys-type-body-md-size 등 텍스트 토큰이 함께 커지도록 합니다." },
+        { label: "확대 상한", value: "200%", note: "KWCAG 1.4.4 텍스트 크기 조정 기준에 따라 200%까지 확대해도 가로 스크롤 없이 콘텐츠를 읽을 수 있어야 합니다." },
+        { label: "컨트롤 위치", value: "GNB 우측, 로그인 앞", note: "본문 진입 전에 항상 노출되는 고정 위치로 페이지마다 이동하지 않습니다." },
+        { label: "버튼 스타일", value: "--component-button-height-sm, --sys-color-action-secondary", note: "보조 버튼 톤을 사용해 본문의 주요 행동(Primary 버튼)과 시각적으로 구분합니다." },
+      ],
+    },
+    usageNotes: [
+      "글자 크기 조정 컨트롤은 GNB 안에 상시 노출하고, 별도 설정 페이지로 숨기지 않습니다.",
+      "선택한 확대 단계는 localStorage에 저장해 페이지를 이동하거나 새로고침해도 그대로 유지합니다.",
+    ],
+    accessibilityNotes: [
+      "150% 단계로 확대해도 버튼 레이블이나 표 셀 텍스트가 잘리거나 다른 요소와 겹치지 않는지 확인합니다.",
+      "사이트 내 확대 컨트롤은 브라우저 자체 확대(Ctrl + 스크롤, 200%)를 대체하지 않으며 두 기능은 함께 동작해야 합니다.",
+    ],
+  },
+
+  "accessible-multimedia": {
+    category: "Utility",
+    specimen: {
+      kind: "table",
+      rows: [
+        { label: "이미지 대체 텍스트", value: "alt 속성 필수 지정", note: "정보를 전달하는 이미지는 내용을 그대로 옮긴 대체 텍스트를 넣고, 장식용 이미지는 alt 값을 빈 문자열로 지정합니다." },
+        { label: "동영상 자막", value: "자막 트랙(WebVTT) 제공", note: "사전 녹화 동영상은 발화 내용과 화자를 구분한 자막 파일을 함께 제공합니다." },
+        { label: "오디오 대체 텍스트", value: "텍스트 스크립트 제공", note: "오디오 전용 콘텐츠는 내용을 문자로 옮긴 스크립트를 재생 영역 인근에 배치합니다." },
+        { label: "자동 재생 제어", value: "정지 · 일시정지 컨트롤 노출", note: "3초 이상 자동 재생되는 콘텐츠는 사용자가 즉시 멈출 수 있는 컨트롤을 제공합니다." },
+      ],
+    },
+    usageNotes: [
+      "동영상을 게시하기 전 자막 파일의 타임코드와 화자 표기가 실제 발화와 일치하는지 검수합니다.",
+      "정보 전달용 이미지는 그림이 담은 의미를 대체 텍스트에 그대로 옮기고, 장식용 아이콘 · 배경 이미지는 빈 alt로 처리해 스크린리더가 반복 안내하지 않도록 합니다.",
+    ],
+    accessibilityNotes: [
+      "KWCAG(한국형 웹 콘텐츠 접근성 지침) 1.1.1 텍스트 아닌 콘텐츠, 1.2.2 자막 제공 기준에 대응합니다.",
+      "3초 이상 자동 재생되는 콘텐츠는 KWCAG 2.2.2 일시정지 · 정지 · 숨기기 기준에 따라 사용자가 제어할 수 있어야 합니다.",
+    ],
+  },
 };
