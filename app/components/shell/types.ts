@@ -1,6 +1,6 @@
 export type Surface = "mobile" | "pc";
 export type Treatment = "full" | "standard";
-export type CategoryId = "foundation" | "components" | "utilities";
+export type CategoryId = "foundation" | "components" | "patterns" | "utilities";
 
 export type NavItem = {
   slug: string;

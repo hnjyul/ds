@@ -1,11 +1,15 @@
 # Common UI
 
 브랜드에 종속되지 않는 범용 디자인 시스템 문서입니다. 모바일과 PC를 별도 서페이스(`/mobile`, `/pc`)로 나누어
-각 환경에 맞는 파운데이션 · 컴포넌트 · 유틸리티 문서를 제공합니다.
+각 환경에 맞는 파운데이션 · 컴포넌트 · 패턴 · 유틸리티 문서를 제공합니다.
 
 - **Mobile** (`/mobile`): TDS Mobile 문서의 Foundation · Components · Utilities 메뉴 구조를 참고해 재구성했습니다.
 - **PC** (`/pc`): 같은 구조를 KRDS(대한민국 정부 디자인 시스템)를 참고해 표 · 아코디언 · 브레드크럼 등
   데스크톱 전용 컴포넌트로 보강했습니다.
+
+**패턴**(`/{surface}/patterns`)은 낱개 컴포넌트가 아니라 여러 컴포넌트를 엮어 하나의 화면 흐름을 만드는
+방법을 다룹니다. PC는 KRDS의 기본 패턴 · 서비스 패턴 구성을, 모바일은 온보딩 · 인증 · 빈 상태 등
+터치 환경에서 반복되는 흐름을 기준으로 정리했습니다.
 
 두 서페이스는 같은 디자인 토큰(`app/tokens.css`)을 공유하며, `[data-surface="mobile"|"pc"]` 레이어로
 라운드 값 · 콘텐츠 폭 등 일부 Component 토큰만 다르게 재정의합니다.
@@ -21,10 +25,10 @@
   목차(TOC)를 관리하는 공용 셸. `app/mobile/layout.tsx`, `app/pc/layout.tsx`에서 각 서페이스의 nav 데이터와
   함께 마운트됩니다.
 - `app/components/docs/*`: 데이터 기반 문서 템플릿(`CategoryIndexTemplate`, `DetailDocTemplate`,
-  `StandardDocTemplate`, `ReferenceDocTemplate`) — 각 서페이스의 `data/{navigation,foundation,components,utilities}.ts`
-  콘텐츠를 렌더링합니다.
+  `StandardDocTemplate`, `ReferenceDocTemplate`, `PatternDocTemplate`) — 각 서페이스의
+  `data/{navigation,foundation,components,patterns,utilities}.ts` 콘텐츠를 렌더링합니다.
 - `app/mobile/`, `app/pc/`: 서페이스별 라우트. `components/button`처럼 상세 문서(탭 + 실시간 프리뷰)가
-  필요한 8개 대표 컴포넌트는 정적 폴더로, 나머지는 `[slug]` 동적 라우트로 데이터를 읽어 렌더링합니다.
+  필요한 대표 컴포넌트는 정적 폴더로, 나머지는 `[slug]` 동적 라우트로 데이터를 읽어 렌더링합니다.
 - `tests/rendered-html.test.mjs`: 서버 렌더링, 서페이스 분리, 토큰 값 검증.
 
 ## 실행

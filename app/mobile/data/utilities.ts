@@ -167,4 +167,27 @@ export const mobileUtilities: Record<string, UtilityEntry> = {
       "Toast는 role=\"status\"와 aria-live=\"polite\"로만 알리고 포커스를 가져가지 않아 진행 중인 스크린리더 탐색 흐름을 끊지 않습니다.",
     ],
   },
+
+  "token-naming": {
+    category: "Utility",
+    specimen: {
+      kind: "table",
+      rows: [
+        { label: "참조 계층 (Reference)", value: "--ref-color-brand-600", note: "테마와 컴포넌트에 관계없이 고정된 원시값을 담으며, 색상·간격·라운드·타이포 램프의 실제 값은 이 계층에만 존재합니다." },
+        { label: "시스템 계층 (System)", value: "--sys-color-action-primary", note: "표면·텍스트·행동 같은 의미 단위로 원시값을 별칭화하며, 모바일과 PC가 같은 이름을 공유합니다." },
+        { label: "컴포넌트 계층 (Component)", value: "--component-button-background-primary", note: "컴포넌트가 실제로 소비하는 구현 계약으로, --ref-color-brand-600 → --sys-color-action-primary → 이 토큰 순서로 연결됩니다." },
+        { label: "이름 형식", value: "--{layer}-{category}-{role}", note: "모든 토큰 이름은 소문자 kebab-case로 쓰고, 계층 접두사 뒤에 범주와 역할, 단계를 하이픈으로 이어 붙입니다." },
+        { label: "재정의 레이어", value: "[data-theme] · [data-surface]", note: "다크 모드는 --ref 값을 바꾸지 않고 --sys 연결만 교체하며, 서페이스 레이어는 버튼·입력·아코디언 라운드처럼 서페이스마다 달라지는 토큰만 다시 선언합니다." },
+      ],
+    },
+    usageNotes: [
+      "새로운 값은 --ref 계층에 먼저 추가하고, 컴포넌트 스타일에서는 --ref를 직접 참조하지 않고 --sys를 거쳐 연결합니다.",
+      "--sys 이름은 색상 값이 아니라 표면·텍스트·행동 같은 역할로 짓고, 라이트와 다크 두 테마에서 같은 이름이 성립하는지 확인합니다.",
+      "서페이스마다 값이 달라지는 항목만 [data-surface] 레이어에 재정의하고, 나머지는 모바일과 PC가 같은 토큰을 그대로 공유합니다.",
+    ],
+    accessibilityNotes: [
+      "다크 모드는 --sys 계층만 재연결하므로, 새 --sys 색상 토큰을 추가할 때 [data-theme=\"dark\"] 값도 함께 정의해 대비를 유지합니다.",
+      "포커스 표시는 --sys-color-focus-ring 하나로 관리해 모든 컴포넌트가 동일한 포커스 대비를 갖도록 합니다.",
+    ],
+  },
 };

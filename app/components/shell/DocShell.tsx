@@ -24,6 +24,7 @@ type ActiveOverlay = "navigation" | "search" | null;
 const CATEGORY_LABELS: Record<string, string> = {
   foundation: "파운데이션",
   components: "컴포넌트",
+  patterns: "패턴",
   utilities: "유틸리티",
 };
 

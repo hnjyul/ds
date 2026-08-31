@@ -675,7 +675,7 @@ pre {
 
 .system-summary {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   margin-top: clamp(3.5rem, 8vw, 6rem);
   padding-top: var(--ref-space-300);
   border-top: 0.0625rem solid var(--sys-color-border-default);

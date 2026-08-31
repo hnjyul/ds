@@ -148,4 +148,27 @@ export const pcUtilities: Record<string, UtilityEntry> = {
       "3초 이상 자동 재생되는 콘텐츠는 KWCAG 2.2.2 일시정지 · 정지 · 숨기기 기준에 따라 사용자가 제어할 수 있어야 합니다.",
     ],
   },
+
+  "token-naming": {
+    category: "Utility",
+    specimen: {
+      kind: "table",
+      rows: [
+        { label: "참조 계층", value: "--ref-*", note: "색상 · 간격 · 반경 · 타이포 원시값을 단계 번호로 고정해 두며, 테마나 서페이스가 바뀌어도 이 값은 변하지 않습니다." },
+        { label: "시스템 계층", value: "--sys-*", note: "모바일과 PC가 함께 쓰는 의미값 계층이며, 테마 전환은 --ref 값을 바꾸지 않고 이 계층의 연결만 다시 겁니다." },
+        { label: "컴포넌트 계층", value: "--component-*", note: "컴포넌트가 실제로 읽는 구현 계약이며, --component-button-background-primary처럼 컴포넌트 · 속성 · 변형 순서로 이어 붙입니다." },
+        { label: "서페이스 레이어", value: "[data-surface=\"pc\"]", note: "--component-button-radius, --component-field-radius, --sys-layout-content-max 등 PC에서 달라지는 일부만 다시 정의합니다." },
+        { label: "밀도 레이어", value: "[data-density=\"compact\"]", note: "--component-button-height-md, --component-field-height를 포함한 높이 · 안쪽 여백 토큰 네 개만 좁은 값으로 바뀝니다." },
+      ],
+    },
+    usageNotes: [
+      "새 토큰은 소문자 kebab-case로 짓고 계층 접두사 뒤에 범주 · 역할 · 단계를 순서대로 이어 붙입니다.",
+      "컴포넌트에서 --ref 값을 직접 읽지 않고 --ref-color-brand-600 → --sys-color-action-primary → --component-button-background-primary처럼 한 계층씩 거쳐 연결합니다.",
+      "표와 목록이 많은 PC 화면을 위해 새 컴포넌트의 높이 · 여백 토큰은 [data-density=\"compact\"] 레이어에도 함께 정의해 헤더의 밀도 토글이 그 화면에서도 동작하게 합니다.",
+    ],
+    accessibilityNotes: [
+      "테마 전환이 --sys 계층만 다시 연결하므로 새 색상 토큰은 라이트 · 다크 두 테마 모두에서 대비를 확인합니다.",
+      "밀도를 compact로 낮춰도 --component-button-height-md는 2.5rem(40px)을 유지해 클릭 목표 크기를 확보합니다.",
+    ],
+  },
 };

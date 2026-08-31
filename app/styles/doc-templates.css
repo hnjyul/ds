@@ -179,6 +179,81 @@
   font-size: var(--ref-font-size-200);
 }
 
+/* Pattern flow: a vertical, numbered sequence of screens. Unlike .token-flow — which is a fixed
+   3-column row — the step count varies per pattern, so this stacks and draws its own spine. */
+.pattern-steps {
+  display: grid;
+  margin-top: var(--ref-space-300);
+  gap: var(--ref-space-150);
+}
+
+.pattern-step {
+  position: relative;
+  display: flex;
+  padding: var(--ref-space-250);
+  border: 0.0625rem solid var(--sys-color-border-default);
+  border-radius: var(--ref-radius-300);
+  background: var(--sys-color-surface-raised);
+  gap: var(--ref-space-200);
+}
+
+/* Spine between consecutive steps, drawn in the gap so it never shifts the layout. */
+.pattern-step:not(:last-child)::after {
+  position: absolute;
+  bottom: calc(var(--ref-space-150) * -1);
+  left: calc(var(--ref-space-250) + 0.875rem);
+  width: 0.0625rem;
+  height: var(--ref-space-150);
+  background: var(--sys-color-border-default);
+  content: "";
+}
+
+.pattern-step__number {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--sys-color-surface-accent-subtle);
+  color: var(--sys-color-text-accent);
+  font-size: var(--ref-font-size-100);
+  font-weight: var(--ref-font-weight-bold);
+}
+
+.pattern-step > div {
+  min-width: 0;
+}
+
+.pattern-step__title {
+  font-size: var(--ref-font-size-400);
+  letter-spacing: -0.02em;
+}
+
+.pattern-step p {
+  margin-top: var(--ref-space-75);
+  color: var(--sys-color-text-secondary);
+  font-size: var(--ref-font-size-300);
+  line-height: 1.7;
+}
+
+.pattern-step__parts {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: var(--ref-space-150);
+  gap: var(--ref-space-50);
+}
+
+.pattern-step__parts li {
+  padding: 0.125rem var(--ref-space-100);
+  border-radius: var(--ref-radius-full);
+  background: var(--sys-color-surface-subtle);
+  color: var(--sys-color-text-tertiary);
+  font-family: var(--sys-font-family-code);
+  font-size: var(--ref-font-size-100);
+}
+
 @media (max-width: 47.9375rem) {
   .reference-table__row {
     grid-template-columns: 1fr;

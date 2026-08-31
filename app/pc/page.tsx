@@ -5,7 +5,7 @@ import { buildHref } from "../components/shell/navigation-utils";
 
 export const metadata: Metadata = {
   title: "PC",
-  description: "KRDS(대한민국 정부 디자인 시스템)를 참고해 보강한 Common UI PC 서페이스의 파운데이션, 컴포넌트, 유틸리티 문서입니다.",
+  description: "KRDS(대한민국 정부 디자인 시스템)를 참고해 보강한 Common UI PC 서페이스의 파운데이션, 컴포넌트, 패턴, 유틸리티 문서입니다.",
 };
 
 export default function PcHome() {
@@ -40,6 +40,10 @@ export default function PcHome() {
             <dd>컴포넌트</dd>
           </div>
           <div>
+            <dt>{pcNav.find((category) => category.id === "patterns")?.items.length}</dt>
+            <dd>패턴</dd>
+          </div>
+          <div>
             <dt>{pcNav.find((category) => category.id === "utilities")?.items.length}</dt>
             <dd>유틸리티</dd>
           </div>
@@ -67,15 +71,15 @@ export default function PcHome() {
           </article>
           <article className="principle-card">
             <span className="principle-card__index">03</span>
-            <h3>접근성 체크리스트</h3>
-            <p>KWCAG 4대 원칙(인식 · 운용 · 이해 · 견고성)을 유틸리티 문서로 별도 제공합니다.</p>
+            <h3>패턴으로 잇기</h3>
+            <p>KRDS의 기본 패턴과 서비스 패턴을 참고해, 낱개 컴포넌트를 신청 · 검색 같은 화면 흐름으로 엮는 방법을 별도 문서로 제공합니다.</p>
           </article>
         </div>
       </section>
 
       <section className="content-section" id="categories" aria-labelledby="pc-categories-title">
         <p className="section-kicker">Structure</p>
-        <h2 id="pc-categories-title">파운데이션 · 컴포넌트 · 유틸리티</h2>
+        <h2 id="pc-categories-title">파운데이션 · 컴포넌트 · 패턴 · 유틸리티</h2>
         <div className="index-card-grid">
           {pcNav.map((category) => (
             <Link className="index-card" href={buildHref("pc", category.id)} key={category.id}>

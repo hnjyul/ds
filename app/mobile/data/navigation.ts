@@ -12,6 +12,7 @@ export const mobileNav: SurfaceNav = [
       { slug: "spacing", label: "간격", description: "화면 밀도와 리듬을 만드는 4px 기반 간격 스케일을 정의합니다.", treatment: "standard" },
       { slug: "radius", label: "라운드", description: "터치 컴포넌트의 형태감을 결정하는 모서리 반경 스케일을 정의합니다.", treatment: "standard" },
       { slug: "motion", label: "모션", description: "화면 전환과 상태 변화에 사용하는 지속시간과 이징 곡선을 정의합니다.", treatment: "standard" },
+      { slug: "writing", label: "글쓰기 원칙", description: "버튼 레이블, 오류 메시지, 빈 상태 문구를 좁은 화면에서 한 손으로 빠르게 읽히도록 쓰는 원칙입니다.", treatment: "standard" },
     ],
   },
   {
@@ -59,6 +60,22 @@ export const mobileNav: SurfaceNav = [
     ],
   },
   {
+    id: "patterns",
+    label: "패턴",
+    description: "컴포넌트 하나가 아니라 여러 컴포넌트를 엮어 하나의 화면 흐름을 만드는 방법입니다. 터치 환경에서 반복되는 진입 · 입력 · 탐색 · 피드백 흐름을 정리했습니다.",
+    items: [
+      { slug: "onboarding", label: "온보딩", description: "앱이나 미니앱에 처음 들어온 사용자에게 핵심 가치와 사용법을 몇 화면 안에 전달하고 첫 행동으로 연결하는 흐름입니다.", treatment: "standard" },
+      { slug: "login-auth", label: "로그인 · 본인인증", description: "휴대폰 본인확인과 간편 비밀번호로 사용자를 식별하는 진입 흐름으로, 미니앱 첫 진입이나 민감 정보 조회 직전에 사용합니다.", treatment: "standard" },
+      { slug: "input-form", label: "입력 폼", description: "여러 입력 항목을 순서대로 받아 제출까지 잇는 흐름으로, 한 화면에 몰아넣기 어려운 가입·신청 폼에 사용합니다.", treatment: "standard" },
+      { slug: "consent", label: "약관 동의", description: "가입·결제 전 필수·선택 약관을 전체 동의와 개별 동의로 나눠 수집하고 본문 확인 경로까지 연결하는 흐름입니다.", treatment: "standard" },
+      { slug: "list-browse", label: "목록 탐색 · 필터", description: "상품 목록이나 거래 내역처럼 항목이 많은 화면에서 검색·필터·정렬로 범위를 좁히고 스크롤에 맞춰 더 불러오는 흐름입니다.", treatment: "standard" },
+      { slug: "error-handling", label: "오류 처리", description: "입력 오류·네트워크 실패·권한 없음을 사용자에게 알리고 다시 시도할 방법까지 이어서 안내하는 화면 흐름입니다.", treatment: "standard" },
+      { slug: "empty-state", label: "빈 상태", description: "데이터가 없거나 검색 결과가 0건인 화면에서 상황을 설명하고 다음 행동을 제안하는 흐름입니다.", treatment: "standard" },
+      { slug: "loading-state", label: "로딩 상태", description: "콘텐츠를 기다리는 동안 화면을 채우는 흐름으로, 목록·결제처럼 서버 응답까지 시간이 걸리는 화면에서 대기 길이에 따라 표현을 고를 때 사용합니다.", treatment: "standard" },
+      { slug: "completion", label: "완료 · 결과", description: "신청·결제·제출이 끝난 순간 결과를 확정적으로 알리고 다음 행동까지 연결하는 화면 흐름입니다.", treatment: "standard" },
+    ],
+  },
+  {
     id: "utilities",
     label: "유틸리티",
     description: "특정 컴포넌트에 속하지 않지만 모바일 화면 전반에서 지켜야 하는 규칙과 보조 클래스입니다.",
@@ -71,6 +88,7 @@ export const mobileNav: SurfaceNav = [
       { slug: "divider", label: "구분선", description: "콘텐츠 사이 경계를 표시하는 얇은 구분선의 두께·색상과 사용 기준을 정리합니다.", treatment: "standard" },
       { slug: "highlight", label: "텍스트 강조", description: "본문 중 핵심 문구를 색상이나 글자 굵기로 강조해 주의를 이끄는 텍스트 강조 규칙입니다.", treatment: "standard" },
       { slug: "overlay-extension", label: "오버레이 유틸리티", description: "useDialog·useToast·useBottomSheet로 오버레이 레이어를 열고 닫는 명령형 훅 사용 원칙입니다.", treatment: "standard" },
+      { slug: "token-naming", label: "토큰 네이밍 규칙", description: "--ref·--sys·--component 3단 계층으로 토큰 이름을 짓는 규칙과 테마·서페이스 재정의 방식을 정리합니다.", treatment: "standard" },
     ],
   },
 ];

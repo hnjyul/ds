@@ -5,7 +5,7 @@ import { buildHref } from "../components/shell/navigation-utils";
 
 export const metadata: Metadata = {
   title: "Mobile",
-  description: "터치와 한 손 조작을 우선하는 Common UI 모바일 서페이스의 파운데이션, 컴포넌트, 유틸리티 문서입니다.",
+  description: "터치와 한 손 조작을 우선하는 Common UI 모바일 서페이스의 파운데이션, 컴포넌트, 패턴, 유틸리티 문서입니다.",
 };
 
 export default function MobileHome() {
@@ -19,8 +19,8 @@ export default function MobileHome() {
           터치 인터페이스
         </h1>
         <p className="hero-section__description">
-          모바일 미니앱 문서 구조를 기준으로 파운데이션 · 컴포넌트 · 유틸리티를 정리했습니다. 화면 폭과 조작
-          방식이 다른 PC 서페이스는 상단의 &apos;PC 화면&apos; 링크에서 확인할 수 있습니다.
+          모바일 미니앱 문서 구조를 기준으로 파운데이션 · 컴포넌트 · 패턴 · 유틸리티를 정리했습니다. 화면 폭과
+          조작 방식이 다른 PC 서페이스는 상단의 &apos;PC 화면&apos; 링크에서 확인할 수 있습니다.
         </p>
         <div className="hero-section__actions">
           <Link className="button button--primary" href={buildHref("mobile", "components")}>
@@ -38,6 +38,10 @@ export default function MobileHome() {
           <div>
             <dt>{mobileNav.find((category) => category.id === "components")?.items.length}</dt>
             <dd>컴포넌트</dd>
+          </div>
+          <div>
+            <dt>{mobileNav.find((category) => category.id === "patterns")?.items.length}</dt>
+            <dd>패턴</dd>
           </div>
           <div>
             <dt>{mobileNav.find((category) => category.id === "utilities")?.items.length}</dt>
@@ -84,7 +88,7 @@ export default function MobileHome() {
 
       <section className="content-section" id="categories" aria-labelledby="mobile-categories-title">
         <p className="section-kicker">Structure</p>
-        <h2 id="mobile-categories-title">파운데이션 · 컴포넌트 · 유틸리티</h2>
+        <h2 id="mobile-categories-title">파운데이션 · 컴포넌트 · 패턴 · 유틸리티</h2>
         <div className="index-card-grid">
           {mobileNav.map((category) => (
             <Link className="index-card" href={buildHref("mobile", category.id)} key={category.id}>

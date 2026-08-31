@@ -73,6 +73,20 @@ test("renders a full-treatment flagship page on each surface", async () => {
   assert.match(pcTable.html, /class="table-demo"/);
 });
 
+test("renders pattern pages that wire components into a numbered screen flow", async () => {
+  const pcPattern = await render("/pc/patterns/application");
+  assert.equal(pcPattern.response.status, 200);
+  assert.match(pcPattern.html, /id="flow-title"/);
+  assert.match(pcPattern.html, /class="pattern-step__parts"/);
+
+  const mobilePattern = await render("/mobile/patterns/error-handling");
+  assert.equal(mobilePattern.response.status, 200);
+  assert.match(mobilePattern.html, /id="when-title"/);
+
+  const unknown = await render("/pc/patterns/does-not-exist");
+  assert.equal(unknown.response.status, 404);
+});
+
 test("renders a data-driven standard/reference page and returns 404 for an unknown slug", async () => {
   const known = await render("/mobile/foundation/color");
   assert.equal(known.response.status, 200);
