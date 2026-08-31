@@ -1,0 +1,106 @@
+/* Mobile-only flagship component previews: BottomSheet, Chip, TextField.
+   (Button reuses the existing shared .button classes; standard-tier mobile items
+   render through StandardDocTemplate, which has no live-preview slot.) */
+
+.bottom-sheet-demo {
+  width: min(100%, 22rem);
+  padding: var(--component-sheet-padding);
+  border: 0.0625rem solid var(--sys-color-border-default);
+  border-radius: var(--component-sheet-radius-top) var(--component-sheet-radius-top) 0 0;
+  background: var(--component-sheet-background);
+  box-shadow: var(--ref-shadow-200);
+  text-align: left;
+}
+
+.bottom-sheet-demo__handle {
+  width: var(--component-sheet-handle-width);
+  height: var(--component-sheet-handle-height);
+  margin: 0 auto var(--ref-space-200);
+  border-radius: var(--ref-radius-full);
+  background: var(--sys-color-border-strong);
+}
+
+.bottom-sheet-demo h3 {
+  font-size: var(--ref-font-size-500);
+  letter-spacing: -0.02em;
+}
+
+.bottom-sheet-demo p {
+  margin-top: var(--ref-space-100);
+  color: var(--sys-color-text-secondary);
+  font-size: var(--ref-font-size-300);
+  line-height: 1.6;
+}
+
+.bottom-sheet-demo__actions {
+  display: grid;
+  margin-top: var(--ref-space-300);
+  gap: var(--ref-space-100);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  height: var(--component-chip-height);
+  padding: 0 var(--component-chip-padding-inline);
+  border: 0.0625rem solid var(--sys-color-border-default);
+  border-radius: var(--component-chip-radius);
+  background: var(--component-chip-background);
+  color: var(--sys-color-text-secondary);
+  font-size: var(--ref-font-size-200);
+  font-weight: var(--ref-font-weight-medium);
+  cursor: pointer;
+  transition:
+    background var(--ref-duration-fast) var(--ref-easing-standard),
+    color var(--ref-duration-fast) var(--ref-easing-standard),
+    border-color var(--ref-duration-fast) var(--ref-easing-standard);
+}
+
+.chip[aria-pressed="true"] {
+  border-color: transparent;
+  background: var(--component-chip-background-selected);
+  color: var(--component-chip-text-selected);
+  font-weight: var(--ref-font-weight-semibold);
+}
+
+.field-demo {
+  display: grid;
+  width: min(100%, 20rem);
+  gap: var(--ref-space-50);
+  text-align: left;
+}
+
+.field-demo label {
+  color: var(--sys-color-text-secondary);
+  font-size: var(--ref-font-size-200);
+  font-weight: var(--ref-font-weight-medium);
+}
+
+.field-demo input {
+  height: var(--component-field-height);
+  padding: 0 var(--component-field-padding-inline);
+  border: 0.0625rem solid var(--component-field-border-color);
+  border-radius: var(--component-field-radius);
+  background: var(--sys-color-surface-canvas);
+  color: var(--sys-color-text-primary);
+  font: inherit;
+}
+
+.field-demo input:focus-visible {
+  border-color: var(--component-field-border-color-focus);
+  outline: none;
+  box-shadow: 0 0 0 0.1875rem color-mix(in srgb, var(--component-field-border-color-focus) 22%, transparent);
+}
+
+.field-demo input[aria-invalid="true"] {
+  border-color: var(--component-field-border-color-error);
+}
+
+.field-demo small {
+  color: var(--sys-color-text-tertiary);
+  font-size: var(--ref-font-size-100);
+}
+
+.field-demo small[data-tone="error"] {
+  color: var(--sys-color-text-danger);
+}

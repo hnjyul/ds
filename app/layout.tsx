@@ -38,6 +38,14 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="" />
+        {/* Pretendard: open-license web font stack-in for KRDS's "Pretendard GOV". Loaded by the
+            visitor's browser from a public CDN — unrelated to this build environment's own network
+            access — with the existing Korean system-font stack as a graceful fallback. */}
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css"
+        />
         <script dangerouslySetInnerHTML={{ __html: preferenceScript }} />
       </head>
       <body>{children}</body>

@@ -1,4 +1,7 @@
 @import "./tokens.css";
+@import "./styles/doc-templates.css";
+@import "./styles/mobile-components.css";
+@import "./styles/pc-components.css";
 
 /* Base */
 *,
@@ -88,7 +91,7 @@ pre {
 
 .site-header {
   position: sticky;
-  z-index: 40;
+  z-index: var(--ref-z-sticky);
   top: 0;
   height: var(--sys-layout-header-height);
   border-bottom: 0.0625rem solid var(--sys-color-border-subtle);
@@ -306,7 +309,7 @@ pre {
 /* Components */
 .skip-link {
   position: fixed;
-  z-index: 100;
+  z-index: var(--ref-z-skip-link);
   top: var(--ref-space-100);
   left: var(--ref-space-100);
   padding: var(--ref-space-100) var(--ref-space-150);
@@ -908,66 +911,6 @@ pre {
   font-size: var(--ref-font-size-300);
 }
 
-.foundation-panel {
-  margin-top: var(--ref-space-400);
-  padding: var(--component-card-padding);
-  border: 0.0625rem solid var(--component-card-border-color);
-  border-radius: var(--component-card-radius);
-  background: var(--sys-color-surface-raised);
-}
-
-.foundation-panel + .foundation-panel {
-  margin-top: var(--ref-space-200);
-}
-
-.foundation-panel__header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--ref-space-200);
-}
-
-.foundation-panel__header h3 {
-  margin-top: var(--ref-space-50);
-  font-size: var(--ref-font-size-600);
-  letter-spacing: -0.025em;
-}
-
-.foundation-panel__meta {
-  color: var(--sys-color-text-tertiary);
-  font-family: var(--sys-font-family-code);
-  font-size: var(--ref-font-size-100);
-}
-
-.color-scales {
-  display: grid;
-  margin-top: var(--ref-space-300);
-  gap: var(--ref-space-100);
-}
-
-.color-scale {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  height: 4.5rem;
-  border-radius: var(--ref-radius-200);
-  overflow: hidden;
-}
-
-.color-swatch {
-  display: block;
-}
-
-.color-swatch--brand-100 { background: var(--ref-color-brand-100); }
-.color-swatch--brand-300 { background: var(--ref-color-brand-300); }
-.color-swatch--brand-500 { background: var(--ref-color-brand-500); }
-.color-swatch--brand-700 { background: var(--ref-color-brand-700); }
-.color-swatch--brand-900 { background: var(--ref-color-brand-900); }
-.color-swatch--neutral-50 { background: var(--ref-color-neutral-50); }
-.color-swatch--neutral-200 { background: var(--ref-color-neutral-200); }
-.color-swatch--neutral-400 { background: var(--ref-color-neutral-400); }
-.color-swatch--neutral-700 { background: var(--ref-color-neutral-700); }
-.color-swatch--neutral-900 { background: var(--ref-color-neutral-900); }
-
 .token-values {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1036,13 +979,6 @@ pre {
   overflow: hidden;
 }
 
-.component-document__header {
-  display: flex;
-  justify-content: space-between;
-  padding: var(--ref-space-400);
-  gap: var(--ref-space-300);
-}
-
 .component-document__category,
 .component-document__version {
   color: var(--sys-color-text-tertiary);
@@ -1050,17 +986,12 @@ pre {
   font-size: var(--ref-font-size-100);
 }
 
-.component-document__header h3 {
-  margin-top: var(--ref-space-100);
-  font-size: var(--ref-font-size-800);
-  letter-spacing: -0.04em;
-}
-
-.component-document__header p {
-  max-width: 34rem;
-  margin-top: var(--ref-space-100);
-  color: var(--sys-color-text-secondary);
-  font-size: var(--ref-font-size-300);
+.component-document--flagship {
+  /* .component-document's own margin-top assumed other content stacked above it in the same
+     section; DetailDocTemplate always places it first, right after .content-section's own
+     top padding, so the extra margin here would double up. */
+  margin-top: 0;
+  padding-top: var(--ref-space-100);
 }
 
 .tabs {
@@ -1198,106 +1129,6 @@ pre {
   transform: translateY(-50%);
 }
 
-.pattern-list {
-  display: grid;
-  margin-top: var(--ref-space-500);
-  border-top: 0.0625rem solid var(--sys-color-border-default);
-}
-
-.pattern-list article {
-  display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr) auto;
-  align-items: center;
-  min-height: 8rem;
-  padding: var(--ref-space-200) 0;
-  border-bottom: 0.0625rem solid var(--sys-color-border-default);
-  gap: var(--ref-space-200);
-}
-
-.pattern-list__index {
-  color: var(--sys-color-text-accent);
-  font-family: var(--sys-font-family-code);
-  font-size: var(--ref-font-size-200);
-}
-
-.pattern-list h3 {
-  font-size: var(--ref-font-size-500);
-  letter-spacing: -0.025em;
-}
-
-.pattern-list p {
-  margin-top: var(--ref-space-50);
-  color: var(--sys-color-text-secondary);
-  font-size: var(--ref-font-size-300);
-}
-
-.pattern-list article > a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 50%;
-  background: var(--sys-color-surface-subtle);
-  color: var(--sys-color-text-accent);
-  font-size: var(--ref-font-size-500);
-}
-
-.journey-flow {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin-top: var(--ref-space-500);
-  padding: var(--ref-space-300);
-  border: 0.0625rem solid var(--sys-color-border-default);
-  border-radius: var(--ref-radius-400);
-  background: var(--sys-color-surface-subtle);
-  gap: var(--ref-space-200);
-}
-
-.journey-flow li {
-  position: relative;
-  min-width: 0;
-}
-
-.journey-flow li:not(:last-child)::after {
-  position: absolute;
-  top: 0.875rem;
-  right: calc(var(--ref-space-200) * -1 + 0.25rem);
-  width: 1.5rem;
-  height: 0.0625rem;
-  background: var(--sys-color-border-strong);
-  content: "";
-}
-
-.journey-flow li > span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.75rem;
-  height: 1.75rem;
-  border-radius: 50%;
-  background: var(--sys-color-action-primary);
-  color: var(--sys-color-text-inverse);
-  font-size: var(--ref-font-size-100);
-  font-weight: var(--ref-font-weight-bold);
-}
-
-.journey-flow div {
-  display: grid;
-  margin-top: var(--ref-space-150);
-  gap: var(--ref-space-25);
-}
-
-.journey-flow strong {
-  font-size: var(--ref-font-size-300);
-}
-
-.journey-flow small {
-  color: var(--sys-color-text-tertiary);
-  font-size: var(--ref-font-size-100);
-  line-height: 1.45;
-}
-
 .quality-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1379,7 +1210,7 @@ pre {
 .mobile-navigation-layer,
 .search-layer {
   position: fixed;
-  z-index: 80;
+  z-index: var(--ref-z-overlay);
   inset: 0;
 }
 
@@ -1775,23 +1606,6 @@ pre {
     width: 100%;
   }
 
-  .pattern-list article {
-    grid-template-columns: 2rem minmax(0, 1fr) auto;
-    gap: var(--ref-space-100);
-  }
-
-  .pattern-list p {
-    margin-right: calc(-2.75rem - var(--ref-space-100));
-  }
-
-  .journey-flow {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .journey-flow li:nth-child(2)::after {
-    display: none;
-  }
-
   .quality-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1831,10 +1645,6 @@ pre {
 
   .quality-grid article {
     min-height: 7rem;
-  }
-
-  .color-scale {
-    height: 3.5rem;
   }
 }
 
