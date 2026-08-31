@@ -1,6 +1,6 @@
-/* Mobile-only flagship component previews: BottomSheet, Chip, TextField.
-   (Button reuses the existing shared .button classes; standard-tier mobile items
-   render through StandardDocTemplate, which has no live-preview slot.) */
+/* Flagship component previews. bottom-sheet-demo/chip are mobile-only; field-demo is shared
+   with the PC TextField/Selectbox full pages (Button reuses the existing shared .button classes;
+   standard-tier items render through StandardDocTemplate, which has no live-preview slot). */
 
 .bottom-sheet-demo {
   width: min(100%, 22rem);
@@ -76,7 +76,8 @@
   font-weight: var(--ref-font-weight-medium);
 }
 
-.field-demo input {
+.field-demo input,
+.field-demo select {
   height: var(--component-field-height);
   padding: 0 var(--component-field-padding-inline);
   border: 0.0625rem solid var(--component-field-border-color);
@@ -103,4 +104,22 @@
 
 .field-demo small[data-tone="error"] {
   color: var(--sys-color-text-danger);
+}
+
+/* Text Button (Mobile flagship) — a lighter-emphasis action than .button, on regular content
+   surfaces. Distinct from .text-button in CodeBlock.tsx, which is tuned for the dark code panel. */
+.text-button-demo {
+  height: 2.25rem;
+  padding: 0 var(--ref-space-150);
+  border: 0;
+  border-radius: var(--ref-radius-200);
+  background: transparent;
+  color: var(--sys-color-text-accent);
+  font-size: var(--ref-font-size-300);
+  font-weight: var(--ref-font-weight-medium);
+  cursor: pointer;
+}
+
+.text-button-demo:hover {
+  background: var(--sys-color-surface-accent-subtle);
 }

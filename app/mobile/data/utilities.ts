@@ -104,4 +104,67 @@ export const mobileUtilities: Record<string, UtilityEntry> = {
       "모든 인터랙티브 레이어(검색, 전체 메뉴)는 포커스 트랩과 Escape 닫기를 함께 제공합니다.",
     ],
   },
+
+  divider: {
+    category: "Utility",
+    specimen: {
+      kind: "table",
+      rows: [
+        { label: "두께", value: "0.0625rem (1px solid)", note: "border-top 또는 border-bottom 한 줄로만 적용해 레이아웃 높이에 영향을 주지 않습니다." },
+        { label: "기본 구분선", value: "--sys-color-border-subtle", note: "리스트 항목, 카드 내부 필드처럼 반복되는 낮은 강조의 경계에 사용합니다." },
+        { label: "강조 구분선", value: "--sys-color-border-default", note: "섹션과 섹션 사이처럼 더 뚜렷하게 분리해야 하는 경계에 사용합니다." },
+        { label: "여백", value: "--ref-space-300", note: "구분선 위아래 최소 여백으로, 인접 콘텐츠와 맞붙어 보이지 않도록 확보합니다." },
+      ],
+    },
+    usageNotes: [
+      "리스트 항목처럼 반복되는 경계에는 --sys-color-border-subtle을, 헤더나 섹션 전환처럼 주의를 끌어야 하는 경계에는 --sys-color-border-default를 사용합니다.",
+      "구분선을 이중선이나 그림자 박스로 대체하지 않고, border 한 줄과 --ref-space 여백 조합만으로 경계를 표현합니다.",
+    ],
+    accessibilityNotes: [
+      "장식용 구분선은 CSS border로만 표현해 스크린리더 낭독 목록에 별도 항목으로 노출되지 않도록 합니다.",
+      "목록·섹션의 의미 있는 경계를 나타낼 때는 <hr> 요소나 role=\"separator\"를 사용해 보조기술 사용자에게도 구조를 전달합니다.",
+    ],
+  },
+
+  highlight: {
+    category: "Utility",
+    specimen: {
+      kind: "table",
+      rows: [
+        { label: "강조 색상", value: "var(--sys-color-text-accent)", note: "브랜드 관련 핵심 문구를 강조할 때 기본으로 사용하는 색상입니다." },
+        { label: "경고 강조 색상", value: "var(--sys-color-text-danger)", note: "삭제, 마감 임박 등 위험·주의 문맥에만 제한적으로 사용합니다." },
+        { label: "강조 굵기", value: "var(--ref-font-weight-semibold)", note: "색상 변경 없이 굵기만으로 강조할 때 본문 기본값(regular)보다 한 단계 높여 사용합니다." },
+        { label: "강조 배경", value: "var(--sys-color-surface-warning-subtle)", note: "문장 안 특정 구간을 배경색으로 강조할 때 사용하며, 텍스트 색상과 4.5:1 대비를 유지합니다." },
+      ],
+    },
+    usageNotes: [
+      "굵기만으로 강조할 때도 <strong> 요소를 사용해 시각적 강조와 스크린리더가 전달하는 의미적 강조를 일치시킵니다.",
+      "한 문장 안에서 색상 강조는 1~2개 구간으로 제한하고, 경고 색상(--sys-color-text-danger)은 실제 위험·주의 정보에만 사용합니다.",
+    ],
+    accessibilityNotes: [
+      "색상만으로 강조를 구분하지 않고 굵기나 밑줄 등 색맹 사용자도 인지 가능한 보조 단서를 함께 제공합니다.",
+      "강조 색상과 배경 사이 대비는 WCAG AA 기준 4.5:1 이상을 유지합니다.",
+    ],
+  },
+
+  "overlay-extension": {
+    category: "Utility",
+    specimen: {
+      kind: "table",
+      rows: [
+        { label: "z-index", value: "--ref-z-overlay", note: "Dialog·BottomSheet 컨테이너에 훅이 자동으로 주입하는 값이라 컴포넌트에서 z-index를 별도로 지정하지 않습니다." },
+        { label: "배경 스크림", value: "--sys-color-overlay", note: "useDialog·useBottomSheet가 여는 딤 배경 색상으로, rgba를 직접 쓰지 않고 이 토큰만 참조합니다." },
+        { label: "전환 시간·이징", value: "--ref-duration-normal / --ref-easing-standard", note: "세 훅 모두 열림·닫힘 애니메이션에 동일하게 적용해 레이어 종류가 달라도 체감 속도가 일치합니다." },
+        { label: "Sheet 형태", value: "--component-sheet-radius-top / --component-sheet-handle-width", note: "useBottomSheet가 렌더링하는 시트의 상단 라운드와 드래그 핸들 폭에 사용하는 토큰입니다." },
+      ],
+    },
+    usageNotes: [
+      "Dialog·BottomSheet는 조건부 렌더링 대신 open()/close() 호출로만 제어합니다 — 트리거 컴포넌트가 언마운트돼도 훅이 별도 포털에 유지하므로 JSX에 남겨두지 않습니다.",
+      "Dialog와 BottomSheet는 인스턴스를 하나만 유지해 두 번째 open() 호출 시 이전 레이어를 먼저 close하지만, Toast는 useToast()가 큐를 관리해 여러 건을 동시에 쌓을 수 있습니다.",
+    ],
+    accessibilityNotes: [
+      "Dialog·BottomSheet는 열릴 때 포커스를 내부 첫 포커스 가능 요소로 옮기고, close() 호출 시 열기 전 포커스였던 트리거 요소로 되돌립니다.",
+      "Toast는 role=\"status\"와 aria-live=\"polite\"로만 알리고 포커스를 가져가지 않아 진행 중인 스크린리더 탐색 흐름을 끊지 않습니다.",
+    ],
+  },
 };

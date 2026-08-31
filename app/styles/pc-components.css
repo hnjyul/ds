@@ -81,3 +81,162 @@
   font-size: var(--ref-font-size-300);
   line-height: 1.6;
 }
+
+/* Checkbox / Radio — native input, accent-color instead of a hand-drawn shape. */
+.choice-demo {
+  display: grid;
+  gap: var(--ref-space-150);
+  text-align: left;
+}
+
+.choice-demo label {
+  display: flex;
+  align-items: center;
+  gap: var(--ref-space-100);
+  color: var(--sys-color-text-primary);
+  font-size: var(--ref-font-size-300);
+}
+
+.choice-demo input[type="checkbox"],
+.choice-demo input[type="radio"] {
+  width: 1.125rem;
+  height: 1.125rem;
+  accent-color: var(--sys-color-action-primary);
+}
+
+/* Badge — .status-badge already renders the success tone; these add the rest. */
+.status-badge--info {
+  background: var(--sys-color-surface-accent-subtle);
+  color: var(--sys-color-text-accent);
+}
+
+.status-badge--warning {
+  background: var(--sys-color-surface-warning-subtle);
+  color: var(--sys-color-text-warning);
+}
+
+.status-badge--danger {
+  background: var(--sys-color-surface-danger-subtle);
+  color: var(--sys-color-text-danger);
+}
+
+.card-demo {
+  display: grid;
+  width: min(100%, 20rem);
+  padding: var(--component-card-padding);
+  border: 0.0625rem solid var(--component-card-border-color);
+  border-radius: var(--component-card-radius);
+  background: var(--sys-color-surface-raised);
+  box-shadow: var(--component-card-shadow);
+  gap: var(--ref-space-100);
+  text-align: left;
+}
+
+.card-demo h3 {
+  font-size: var(--ref-font-size-400);
+}
+
+.card-demo p {
+  color: var(--sys-color-text-secondary);
+  font-size: var(--ref-font-size-300);
+  line-height: 1.6;
+}
+
+.tooltip-demo {
+  position: relative;
+  display: inline-flex;
+  margin-top: var(--ref-space-500);
+}
+
+.tooltip-demo__bubble {
+  position: absolute;
+  bottom: calc(100% + var(--ref-space-100));
+  left: 50%;
+  padding: var(--ref-space-100) var(--ref-space-150);
+  border-radius: var(--ref-radius-200);
+  background: var(--sys-color-surface-inverse);
+  color: var(--sys-color-text-inverse);
+  font-size: var(--ref-font-size-100);
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.dialog-demo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 14rem;
+  padding: var(--ref-space-400);
+  border-radius: var(--ref-radius-200);
+  background: var(--sys-color-overlay);
+}
+
+.dialog-demo__panel {
+  width: min(100%, 22rem);
+  padding: var(--component-card-padding);
+  border-radius: var(--ref-radius-400);
+  background: var(--sys-color-surface-raised);
+  box-shadow: var(--ref-shadow-300);
+  text-align: left;
+}
+
+.dialog-demo__panel h3 {
+  font-size: var(--ref-font-size-500);
+}
+
+.dialog-demo__panel p {
+  margin-top: var(--ref-space-100);
+  color: var(--sys-color-text-secondary);
+  font-size: var(--ref-font-size-300);
+  line-height: 1.6;
+}
+
+.dialog-demo__actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--ref-space-300);
+  gap: var(--ref-space-100);
+}
+
+.pagination-demo {
+  display: flex;
+  align-items: center;
+  gap: var(--ref-space-100);
+}
+
+.pagination-demo button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  padding: 0 var(--ref-space-100);
+  border: 0.0625rem solid var(--sys-color-border-default);
+  border-radius: var(--ref-radius-200);
+  background: var(--sys-color-surface-canvas);
+  color: var(--sys-color-text-secondary);
+  font-size: var(--ref-font-size-300);
+  cursor: pointer;
+}
+
+.pagination-demo button[aria-current="page"] {
+  border-color: transparent;
+  background: var(--sys-color-action-primary);
+  color: var(--sys-color-text-inverse);
+  font-weight: var(--ref-font-weight-semibold);
+}
+
+.tab-preview {
+  width: 100%;
+  border: 0.0625rem solid var(--sys-color-border-default);
+  border-radius: var(--ref-radius-200);
+  overflow: hidden;
+  text-align: left;
+}
+
+.tab-preview__panel {
+  padding: var(--ref-space-200);
+  color: var(--sys-color-text-secondary);
+  font-size: var(--ref-font-size-300);
+}
