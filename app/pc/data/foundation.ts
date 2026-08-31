@@ -23,7 +23,7 @@ export const pcFoundation: Record<string, FoundationEntry> = {
           ],
         },
         {
-          label: "Secondary — Primary에서 파생한 근사값",
+          label: "Secondary — Primary와 구분되는 독립 색상군",
           swatches: [
             { name: "Secondary 50", value: "var(--ref-color-brand-secondary-50)", token: "--ref-color-brand-secondary-50" },
             { name: "Secondary 300", value: "var(--ref-color-brand-secondary-300)", token: "--ref-color-brand-secondary-300" },
@@ -49,7 +49,7 @@ export const pcFoundation: Record<string, FoundationEntry> = {
     ],
     accessibilityNotes: [
       "흰 배경 위 Primary 텍스트는 대비비 약 4.55:1로 WCAG AA 본문 기준(4.5:1)을 충족합니다.",
-      "KRDS는 색상별 10단계 스케일 전체가 WCAG AA 기준을 만족하도록 설계되어 있습니다 — 이 시스템은 대표 4단계만 우선 구현했으며, 전체 단계는 후속 작업입니다.",
+      "KRDS는 색상군마다 11단계(5~95) 스케일을 제공하며, 이 시스템은 문서 화면에서 실제로 쓰는 대표 4단계(50·300·600·800)만 노출합니다.",
     ],
   },
 

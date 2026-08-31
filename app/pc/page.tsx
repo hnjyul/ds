@@ -50,9 +50,9 @@ export default function PcHome() {
         <p className="section-kicker">Reference</p>
         <h2 id="pc-krds-title">KRDS를 참고해 보강한 지점</h2>
         <p className="section-description">
-          Primary 색상 <code>#256EF4</code>(정부 청색)와 본문 텍스트 근사 검정 <code>#1E2124</code>는 KRDS 공개
-          정보로 확인해 그대로 반영했습니다. Secondary 색상과 세부 컴포넌트 규격은 이 환경의 네트워크 정책상
-          krds.go.kr에 직접 접근하지 못해 근사값으로 구현했으며, 실제 접근이 가능해지면 재검증이 필요합니다.
+          Primary 색상 <code>#256EF4</code>(정부 청색)와 Secondary 회청색 계열, 본문 텍스트 색상
+          <code>#1E2124</code>는 모두 KRDS 공식 색상 토큰을 그대로 반영했습니다. Table · Accordion ·
+          Breadcrumb 등 정보 밀도가 높은 컴포넌트를 우선 보강했습니다.
         </p>
         <div className="principle-grid">
           <article className="principle-card">

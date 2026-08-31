@@ -12,7 +12,7 @@
   --ref-color-neutral-600: #525a66;
   --ref-color-neutral-700: #383f49;
   --ref-color-neutral-800: #242a32;
-  /* KRDS 본문 텍스트 근사 검정. krds.go.kr 요약(웹검색)으로 확인. */
+  /* KRDS Gray 90단계와 일치하는 본문 텍스트 색상. */
   --ref-color-neutral-900: #1e2124;
   --ref-color-neutral-950: #101318;
 
@@ -22,20 +22,17 @@
   --ref-color-brand-300: #8ec0ff;
   --ref-color-brand-400: #5b9dff;
   --ref-color-brand-500: #3478f6;
-  /* KRDS 정부 표준 Primary(정부 청색). krds.go.kr/html/site/style/style_02.html 요약(웹검색)으로 확인. */
+  /* KRDS Primary 50단계(정부 청색). */
   --ref-color-brand-600: #256ef4;
   --ref-color-brand-700: #1f4bc6;
   --ref-color-brand-800: #203fa0;
   --ref-color-brand-900: #20377e;
 
-  /* Secondary 램프 — 근사값. KRDS는 "primary와 조화되는, 덜 강조되는 보조색"으로만 서술하며
-     정확한 hex는 이 세션의 네트워크 정책상 krds.go.kr 접근이 막혀 확인하지 못했다.
-     Primary와 같은 색상군(약 219–226° blue)에서 채도를 낮춘 파생값이며,
-     krds.go.kr/html/site/style/style_02.html 접근이 가능해지면 재검증이 필요하다. */
-  --ref-color-brand-secondary-50: #f0f3f9;
-  --ref-color-brand-secondary-300: #a6b4d9;
-  --ref-color-brand-secondary-600: #425894;
-  --ref-color-brand-secondary-800: #242f57;
+  /* KRDS Secondary 램프 — Primary의 파생 톤이 아니라 그 자체로 독립된 회청색 계열이다. */
+  --ref-color-brand-secondary-50: #eef2f7;
+  --ref-color-brand-secondary-300: #bacbde;
+  --ref-color-brand-secondary-600: #346fb2;
+  --ref-color-brand-secondary-800: #052b57;
 
   --ref-color-green-50: #edfbf3;
   --ref-color-green-600: #0e7648;

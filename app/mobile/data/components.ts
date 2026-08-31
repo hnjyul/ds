@@ -12,6 +12,7 @@ export const mobileComponents: Record<string, ComponentEntry> = {
     category: "Actions",
     guidelines: [
       { tone: "do", label: "권장", title: "핵심 행동 하나만 배치합니다", body: "화면당 BottomCTA는 하나만 사용하고, 보조 행동은 텍스트 버튼으로 낮춥니다." },
+      { tone: "do", label: "권장", title: "행동 개수에 맞는 형태를 고릅니다", body: "행동이 하나면 Single, 대등한 두 선택지가 필요하면 Double, 스크롤과 무관하게 항상 노출해야 하면 Fixed를 사용합니다." },
       { tone: "avoid", label: "주의", title: "스크롤 콘텐츠를 가리지 않습니다", body: "고정 영역이 마지막 콘텐츠를 가리지 않도록 본문 하단에 충분한 여백을 확보합니다." },
     ],
     tokenRows: [
@@ -29,6 +30,7 @@ export const mobileComponents: Record<string, ComponentEntry> = {
     category: "Overlay",
     guidelines: [
       { tone: "do", label: "권장", title: "결과를 되돌릴 수 없을 때 사용합니다", body: "삭제, 결제처럼 영향이 큰 행동을 확인받을 때 사용합니다." },
+      { tone: "do", label: "권장", title: "취소 가능 여부로 형태를 나눕니다", body: "확인만 받으면 되는 정보 전달은 AlertDialog, 사용자가 진행 여부를 선택해야 하면 ConfirmDialog를 사용합니다." },
       { tone: "avoid", label: "주의", title: "단순 정보 전달에는 사용하지 않습니다", body: "가벼운 안내는 Toast나 인라인 메시지로 대체합니다." },
     ],
     tokenRows: [

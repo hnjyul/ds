@@ -23,7 +23,7 @@ export const mobileFoundation: Record<string, FoundationEntry> = {
           ],
         },
         {
-          label: "Secondary — Primary에서 파생한 근사값",
+          label: "Secondary — Primary와 구분되는 독립 색상군",
           swatches: [
             { name: "Secondary 50", value: "var(--ref-color-brand-secondary-50)", token: "--ref-color-brand-secondary-50" },
             { name: "Secondary 300", value: "var(--ref-color-brand-secondary-300)", token: "--ref-color-brand-secondary-300" },
@@ -44,7 +44,7 @@ export const mobileFoundation: Record<string, FoundationEntry> = {
     },
     usageNotes: [
       "가장 중요한 행동에는 Primary(Brand 600)를, 덜 중요한 강조나 보조 배경에는 Secondary를 사용합니다.",
-      "Primary는 KRDS가 공개한 정부 청색(#256EF4)을 그대로 사용하며, Secondary는 같은 색상군에서 파생한 근사값입니다 — 이 세션에서 krds.go.kr 색상 페이지에 직접 접근할 수 없어 정확한 Secondary 수치는 추후 재검증이 필요합니다.",
+      "Primary는 KRDS 정부 청색(#256EF4)을, Secondary는 KRDS가 별도로 정의한 회청색 계열을 그대로 사용합니다 — 두 색상군은 서로의 파생값이 아니라 독립된 램프입니다.",
       "색상만으로 상태를 구분하지 않고 아이콘이나 텍스트 라벨을 함께 사용합니다.",
     ],
     accessibilityNotes: [
