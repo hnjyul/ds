@@ -137,6 +137,12 @@ pre {
   color: var(--sys-color-text-primary);
 }
 
+.site-header__links a[aria-current="page"] {
+  background: var(--sys-color-surface-subtle);
+  color: var(--sys-color-text-primary);
+  font-weight: var(--ref-font-weight-semibold);
+}
+
 .site-header__actions {
   display: flex;
   align-items: center;
@@ -524,6 +530,44 @@ pre {
   letter-spacing: 0.08em;
   line-height: 1.4;
   text-transform: uppercase;
+}
+
+.navigation-group__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ref-space-100);
+}
+
+.navigation-group__header h2 {
+  margin-bottom: 0;
+}
+
+.navigation-group__label {
+  min-width: 0;
+}
+
+.navigation-group__toggle {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-bottom: var(--ref-space-75);
+  border: 0;
+  border-radius: var(--ref-radius-100);
+  background: transparent;
+  color: var(--sys-color-text-tertiary);
+  cursor: pointer;
+}
+
+.navigation-group__toggle:hover {
+  background: var(--sys-color-surface-subtle);
+}
+
+.navigation-group__toggle[aria-expanded="true"] .chevron-icon {
+  transform: rotate(45deg);
 }
 
 .navigation-group ul {

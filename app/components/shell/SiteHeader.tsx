@@ -7,7 +7,7 @@ import type { Surface } from "./types";
 type Density = "comfortable" | "compact";
 type Theme = "light" | "dark";
 
-type TopLink = { href: string; label: string };
+type TopLink = { href: string; label: string; isActive: boolean };
 
 type SiteHeaderProps = {
   surface: Surface;
@@ -73,7 +73,7 @@ export function SiteHeader({
 
         <nav className="site-header__links" aria-label="주요 메뉴">
           {topLinks.map((link) => (
-            <Link href={link.href} key={link.href}>
+            <Link href={link.href} key={link.href} aria-current={link.isActive ? "page" : undefined}>
               {link.label}
             </Link>
           ))}

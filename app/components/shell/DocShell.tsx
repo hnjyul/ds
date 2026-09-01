@@ -304,6 +304,7 @@ export function DocShell({
   const topLinks = nav.map((category) => ({
     href: buildHref(surface, category.id),
     label: category.label,
+    isActive: category.id === location.categoryId,
   }));
 
   const breadcrumbTrail: { label: string; href: string | null }[] = [{ label: "홈", href: homeHref }];
