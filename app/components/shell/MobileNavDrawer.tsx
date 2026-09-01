@@ -14,6 +14,7 @@ type MobileNavDrawerProps = {
   activeItemSlug: string | null;
   drawerRef: RefObject<HTMLElement | null>;
   closeButtonRef: RefObject<HTMLButtonElement | null>;
+  isClosing: boolean;
   onClose: () => void;
   onOpenSearch: () => void;
 };
@@ -26,11 +27,12 @@ export function MobileNavDrawer({
   activeItemSlug,
   drawerRef,
   closeButtonRef,
+  isClosing,
   onClose,
   onOpenSearch,
 }: MobileNavDrawerProps) {
   return (
-    <div className="mobile-navigation-layer">
+    <div className={`mobile-navigation-layer${isClosing ? " mobile-navigation-layer--closing" : ""}`}>
       <button
         className="layer-backdrop"
         type="button"

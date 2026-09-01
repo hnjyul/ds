@@ -21,6 +21,10 @@ type Theme = "light" | "dark";
 type Density = "comfortable" | "compact";
 type ActiveOverlay = "navigation" | "search" | null;
 
+// Matches --ref-duration-normal in globals.css: how long the drawer's slide-out
+// animation runs before it's safe to unmount.
+const MOBILE_NAVIGATION_EXIT_DURATION_MS = 200;
+
 const CATEGORY_LABELS: Record<string, string> = {
   foundation: "파운데이션",
   components: "컴포넌트",
@@ -44,6 +48,7 @@ export function DocShell({
   const [theme, setTheme] = useState<Theme>("light");
   const [density, setDensity] = useState<Density>("comfortable");
   const [isMobileNavigationOpen, setIsMobileNavigationOpen] = useState(false);
+  const [isMobileNavigationRendered, setIsMobileNavigationRendered] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [headings, setHeadings] = useState<TocHeading[]>([]);
@@ -57,6 +62,7 @@ export function DocShell({
   const mobileNavigationRef = useRef<HTMLElement>(null);
   const articleRef = useRef<HTMLElement>(null);
   const returnFocusRef = useRef<HTMLElement | null>(null);
+  const mobileNavigationExitTimeoutRef = useRef<number | null>(null);
 
   const activeOverlay: ActiveOverlay = isSearchOpen ? "search" : isMobileNavigationOpen ? "navigation" : null;
 
@@ -128,6 +134,20 @@ export function DocShell({
     return () => observer.disconnect();
   }, [pathname]);
 
+  // Keep the drawer mounted until its slide-out animation finishes, then unmount it.
+  // The pending timeout is cancelled if the drawer reopens before it fires, so a
+  // fast close-then-reopen doesn't unmount the drawer out from under the user.
+  const closeMobileNavigation = () => {
+    setIsMobileNavigationOpen(false);
+    if (mobileNavigationExitTimeoutRef.current !== null) {
+      window.clearTimeout(mobileNavigationExitTimeoutRef.current);
+    }
+    mobileNavigationExitTimeoutRef.current = window.setTimeout(() => {
+      setIsMobileNavigationRendered(false);
+      mobileNavigationExitTimeoutRef.current = null;
+    }, MOBILE_NAVIGATION_EXIT_DURATION_MS);
+  };
+
   useEffect(() => {
     const handleGlobalKeyDown = (event: KeyboardEvent) => {
       const target = event.target;
@@ -149,7 +169,7 @@ export function DocShell({
 
       if (event.key === "Escape") {
         setIsSearchOpen(false);
-        setIsMobileNavigationOpen(false);
+        closeMobileNavigation();
       }
     };
 
@@ -252,7 +272,12 @@ export function DocShell({
 
   const openMobileNavigation = (trigger: HTMLElement) => {
     rememberReturnFocus(trigger);
+    if (mobileNavigationExitTimeoutRef.current !== null) {
+      window.clearTimeout(mobileNavigationExitTimeoutRef.current);
+      mobileNavigationExitTimeoutRef.current = null;
+    }
     setIsMobileNavigationOpen(true);
+    setIsMobileNavigationRendered(true);
   };
 
   const closeSearch = () => {
@@ -381,7 +406,7 @@ export function DocShell({
         <TableOfContentsRail headings={headings} activeId={activeHeadingId} />
       </div>
 
-      {isMobileNavigationOpen && (
+      {isMobileNavigationRendered && (
         <MobileNavDrawer
           surface={surface}
           nav={nav}
@@ -390,7 +415,8 @@ export function DocShell({
           activeItemSlug={location.itemSlug}
           drawerRef={mobileNavigationRef}
           closeButtonRef={mobileCloseRef}
-          onClose={() => setIsMobileNavigationOpen(false)}
+          isClosing={!isMobileNavigationOpen}
+          onClose={closeMobileNavigation}
           onOpenSearch={() => openSearch()}
         />
       )}

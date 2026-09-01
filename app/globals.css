@@ -1214,6 +1214,12 @@ pre {
   inset: 0;
 }
 
+.mobile-navigation-layer--closing {
+  /* Let clicks reach the page underneath immediately; the layer itself is
+     only still mounted to let its exit animation play out cosmetically. */
+  pointer-events: none;
+}
+
 @keyframes layer-backdrop-fade-in {
   from {
     opacity: 0;
@@ -1224,6 +1230,16 @@ pre {
   }
 }
 
+@keyframes layer-backdrop-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
 @keyframes mobile-navigation-slide-in {
   from {
     transform: translateX(100%);
@@ -1231,6 +1247,16 @@ pre {
 
   to {
     transform: translateX(0);
+  }
+}
+
+@keyframes mobile-navigation-slide-out {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(100%);
   }
 }
 
@@ -1246,6 +1272,10 @@ pre {
   animation: layer-backdrop-fade-in var(--ref-duration-normal) var(--ref-easing-standard);
 }
 
+.mobile-navigation-layer--closing .layer-backdrop {
+  animation: layer-backdrop-fade-out var(--ref-duration-normal) var(--ref-easing-standard) forwards;
+}
+
 .mobile-navigation {
   position: relative;
   display: flex;
@@ -1256,6 +1286,10 @@ pre {
   background: var(--sys-color-surface-canvas);
   box-shadow: var(--ref-shadow-300);
   animation: mobile-navigation-slide-in var(--ref-duration-normal) var(--ref-easing-standard);
+}
+
+.mobile-navigation-layer--closing .mobile-navigation {
+  animation: mobile-navigation-slide-out var(--ref-duration-normal) var(--ref-easing-standard) forwards;
 }
 
 .mobile-navigation__header {
